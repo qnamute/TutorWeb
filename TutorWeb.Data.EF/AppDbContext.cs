@@ -5,10 +5,8 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using TutorWeb.Data.Entities;
 using TutorWeb.Data.Interfaces;
 
@@ -34,7 +32,6 @@ namespace TutorWeb.Data.EF
         {
             #region Identity Config
 
-
             builder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims").HasKey(x => x.Id);
             builder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims")
                 .HasKey(x => x.Id);
@@ -46,12 +43,9 @@ namespace TutorWeb.Data.EF
 
             // Entity Config
 
-
-
             #endregion Identity Config
 
             //base.OnModelCreating(builder);
-
         }
 
         public override int SaveChanges()

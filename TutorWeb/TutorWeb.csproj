@@ -19,11 +19,8 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\TutorWeb.Application\TutorWeb.Application.csproj" />
     <ProjectReference Include="..\TutorWeb.Data.EF\TutorWeb.Data.EF.csproj" />
     <ProjectReference Include="..\TutorWeb.Data\TutorWeb.Data.csproj" />
-    <ProjectReference Include="..\TutorWeb.Infrastructure\TutorWeb.Infrastructure.csproj" />
-    <ProjectReference Include="..\TutorWeb.Utilities\TutorWeb.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

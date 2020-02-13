@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 using TutorWeb.Data.Interfaces;
 using TutorWeb.Infrastructure.ShareKernel;
 
 namespace TutorWeb.Data.Entities
 {
+    [Table("Subjects")]
     public class Subject : DomainEntity<int>, IDateTracking
     {
         public string Name { get; set; }

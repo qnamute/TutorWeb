@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
 using TutorWeb.Infrastructure.Interfaces;
 using TutorWeb.Infrastructure.ShareKernel;
 
 namespace TutorWeb.Data.EF
 {
-    public class Repository<T,K>: IRepository<T, K>, IDisposable where T: DomainEntity<K>
+    public class Repository<T, K> : IRepository<T, K>, IDisposable where T : DomainEntity<K>
     {
         private readonly AppDbContext _context;
 
-        public EFRepository(AppDbContext context)
+        public Repository(AppDbContext context)
         {
             _context = context;
         }
@@ -36,7 +38,6 @@ namespace TutorWeb.Data.EF
                 foreach (var includeProperty in includeProperties)
                 {
                     items = items.Include(includeProperty);
-
                 }
             }
             return items;
@@ -50,7 +51,6 @@ namespace TutorWeb.Data.EF
                 foreach (var includeProperty in includeProperties)
                 {
                     items = items.Include(includeProperty);
-
                 }
             }
             return items.Where(predicate);
