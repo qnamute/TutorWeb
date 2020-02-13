@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TutorWeb", "TutorWeb\TutorWeb.csproj", "{B2717051-ED8B-4B3A-A048-563DC32E82FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TutorWeb.Application", "TutorWeb.Application\TutorWeb.Application.csproj", "{9F3D100D-F314-4B62-99F5-CB78397119B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TutorWeb.Data", "TutorWeb.Data\TutorWeb.Data.csproj", "{F2A28CE6-D1EC-4FA4-8EB8-218237BD58C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TutorWeb.Data.EF", "TutorWeb.Data.EF\TutorWeb.Data.EF.csproj", "{F9D7FBFD-2FBB-4758-8FA5-16D04CEA4294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TutorWeb.Infrastructure", "TutorWeb.Infrastructure\TutorWeb.Infrastructure.csproj", "{AF40B157-0A86-4ECF-B53B-3A2FC1AB78E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TutorWeb.Utilities", "TutorWeb.Utilities\TutorWeb.Utilities.csproj", "{1097B11A-D8C3-4A01-92FA-86DDF9EDF52D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{437156A3-9DF7-4561-8748-33591A78A11D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{C6158818-BE36-461E-92F9-FD0B303818E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{555A2891-46C1-4E2F-A444-8E2624596CB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{1509EB2D-EBFD-43C5-B81F-73CA656E3A89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2717051-ED8B-4B3A-A048-563DC32E82FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2717051-ED8B-4B3A-A048-563DC32E82FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2717051-ED8B-4B3A-A048-563DC32E82FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2717051-ED8B-4B3A-A048-563DC32E82FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F3D100D-F314-4B62-99F5-CB78397119B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F3D100D-F314-4B62-99F5-CB78397119B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F3D100D-F314-4B62-99F5-CB78397119B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F3D100D-F314-4B62-99F5-CB78397119B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A28CE6-D1EC-4FA4-8EB8-218237BD58C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A28CE6-D1EC-4FA4-8EB8-218237BD58C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A28CE6-D1EC-4FA4-8EB8-218237BD58C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A28CE6-D1EC-4FA4-8EB8-218237BD58C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9D7FBFD-2FBB-4758-8FA5-16D04CEA4294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D7FBFD-2FBB-4758-8FA5-16D04CEA4294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D7FBFD-2FBB-4758-8FA5-16D04CEA4294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D7FBFD-2FBB-4758-8FA5-16D04CEA4294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF40B157-0A86-4ECF-B53B-3A2FC1AB78E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF40B157-0A86-4ECF-B53B-3A2FC1AB78E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF40B157-0A86-4ECF-B53B-3A2FC1AB78E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF40B157-0A86-4ECF-B53B-3A2FC1AB78E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1097B11A-D8C3-4A01-92FA-86DDF9EDF52D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1097B11A-D8C3-4A01-92FA-86DDF9EDF52D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1097B11A-D8C3-4A01-92FA-86DDF9EDF52D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1097B11A-D8C3-4A01-92FA-86DDF9EDF52D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B2717051-ED8B-4B3A-A048-563DC32E82FE} = {437156A3-9DF7-4561-8748-33591A78A11D}
+		{9F3D100D-F314-4B62-99F5-CB78397119B9} = {C6158818-BE36-461E-92F9-FD0B303818E4}
+		{F2A28CE6-D1EC-4FA4-8EB8-218237BD58C3} = {555A2891-46C1-4E2F-A444-8E2624596CB3}
+		{F9D7FBFD-2FBB-4758-8FA5-16D04CEA4294} = {555A2891-46C1-4E2F-A444-8E2624596CB3}
+		{AF40B157-0A86-4ECF-B53B-3A2FC1AB78E1} = {1509EB2D-EBFD-43C5-B81F-73CA656E3A89}
+		{1097B11A-D8C3-4A01-92FA-86DDF9EDF52D} = {1509EB2D-EBFD-43C5-B81F-73CA656E3A89}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C3E121A-58C3-48E9-A7E5-425C4A32D417}
+	EndGlobalSection
+EndGlobal
