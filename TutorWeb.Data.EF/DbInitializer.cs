@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TutorWeb.Data.Entities;
@@ -57,7 +58,7 @@ namespace TutorWeb.Data.EF
             {
                 var check = await _userManager.CreateAsync(new User()
                 {
-                    UserName = "admin",
+                    UserName = "admin@gmail.com",
                     FullName = "Đinh Quang Nam",
                     Email = "admin@gmail.com",
                     DateCreated = DateTime.Now,
@@ -69,6 +70,27 @@ namespace TutorWeb.Data.EF
                     var user = await _userManager.FindByNameAsync("admin"); // tim user admin
                     _userManager.AddToRoleAsync(user, "Admin").Wait(); // add admin vao role admin
                 }
+            }
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                string a = ex.ToString();
+            };
+
+            if (_context.Functions.Count() == 0)
+            {
+                _context.Functions.AddRange(new List<Function>()
+                {
+                      new Function() {Name = "Quản lý bài đăng",ParentId = 0,SortOrder = 1,URL = "",IconCss = "fa-tasks"  },
+                      new Function() {Name = "Quản lý lớp",ParentId = 0,SortOrder = 1, URL = "/Admin/Property",IconCss = "fa-home"  },
+                      new Function() {Name = "Quản lý môn học",ParentId = 0,SortOrder = 2, URL = "/Admin/ActiveProperty",IconCss = "fa-home"  },
+                      new Function() {Name = "Quản lý tài khoản",ParentId = 0, SortOrder = 3, URL = "/Admin/InActiveProperty",IconCss = "fa-home"  },
+                      new Function() {Name = "Gia sư",ParentId = 4,SortOrder = 4, URL = "/Admin/AwaitingApprovalProperty",IconCss = "fa-home"  },
+                      new Function() {Name = "Tài khoản thường",ParentId = 4,SortOrder = 4, URL = "/Admin/AwaitingApprovalProperty",IconCss = "fa-home"  }
+                });
             }
             try
             {

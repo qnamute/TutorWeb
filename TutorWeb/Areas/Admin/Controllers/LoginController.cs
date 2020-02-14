@@ -43,11 +43,6 @@ namespace TutorWeb.Areas.Admin.Controllers
                     _logger.LogInformation("User logged in.");
                     return new OkObjectResult(new GenericResult(true));
                 }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return new ObjectResult(new GenericResult(false, "Tài khoản đã bị khóa!"));
-                }
                 else
                 {
                     return new ObjectResult(new GenericResult(false, "Thông tin đăng nhập không đúng!"));

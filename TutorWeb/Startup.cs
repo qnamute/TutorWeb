@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using TutorWeb.Application.Implementations;
@@ -46,11 +47,30 @@ namespace TutorWeb
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddIdentity<User, Role>()
                 .AddRoles<Role>()
                 .AddRoleManager<RoleManager<Role>>()
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<AppDbContext>();
+
+            //Config identity
+            services.Configure<IdentityOptions>(options =>
+            {
+                //Password setting
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                //Lockout setting
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                //User setting
+                options.User.RequireUniqueEmail = true;
+            });
+
 
             //automapper
             services.AddAutoMapper();
