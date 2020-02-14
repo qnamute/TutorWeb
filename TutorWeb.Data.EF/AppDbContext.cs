@@ -28,6 +28,8 @@ namespace TutorWeb.Data.EF
 
         public DbSet<Subject> Subjects { get; set; }
 
+        public DbSet<Function> Functions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             #region Identity Config

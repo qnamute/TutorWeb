@@ -8,6 +8,19 @@ namespace TutorWeb.Data.Entities
     [Table("Subjects")]
     public class Subject : DomainEntity<int>, IDateTracking
     {
+        public Subject()
+        {
+        }
+
+        public Subject(int id, string code, string name, DateTime dateCreated, DateTime dateModified)
+        {
+            Id = id;
+            Code = code;
+            Name = name;
+            DateCreated = dateCreated;
+            DateModified = dateModified;
+        }
+
         public string Name { get; set; }
 
         public string Code { get; set; }

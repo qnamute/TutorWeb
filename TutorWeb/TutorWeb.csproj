@@ -8,17 +8,22 @@
 
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
   </ItemGroup>
 
 
   <ItemGroup>
-    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <ProjectReference Include="..\TutorWeb.Application\TutorWeb.Application.csproj" />
     <ProjectReference Include="..\TutorWeb.Data.EF\TutorWeb.Data.EF.csproj" />
     <ProjectReference Include="..\TutorWeb.Data\TutorWeb.Data.csproj" />
   </ItemGroup>

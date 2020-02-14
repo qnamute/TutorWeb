@@ -1,13 +1,26 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
+using System.Globalization;
+using TutorWeb.Application.Implementations;
+using TutorWeb.Application.Interfaces;
 using TutorWeb.Data.EF;
+using TutorWeb.Data.EF.Repositories;
 using TutorWeb.Data.Entities;
+using TutorWeb.Data.IRepositories;
+using TutorWeb.Helpers;
+using TutorWeb.Infrastructure.Interfaces;
+using TutorWeb.Services;
 
 namespace TutorWeb
 {
@@ -39,7 +52,88 @@ namespace TutorWeb
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //automapper
+            services.AddAutoMapper();
+
+            //Add Applicatiton Services
+            services.AddScoped<UserManager<User>, UserManager<User>>();
+            services.AddScoped<RoleManager<Role>, RoleManager<Role>>();
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsPrincipalFactory>();
+
+            //Mapping domain and viewmodal
+            services.AddSingleton(Mapper.Configuration);
+            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IViewRenderService, ViewRenderService>();
+
+            services.AddTransient<DbInitializer>();
+
+            //Add user claim sercice
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsPrincipalFactory>();
+
+            services.AddMvc(options =>
+            {
+                options.CacheProfiles.Add("Default",
+                    new CacheProfile()
+                    {
+                        Duration = 60
+                    });
+                options.CacheProfiles.Add("Never",
+                    new CacheProfile()
+                    {
+                        Location = ResponseCacheLocation.None,
+                        NoStore = true
+                    });
+            }).AddViewLocalization(
+                   LanguageViewLocationExpanderFormat.Suffix,
+                   opts => { opts.ResourcesPath = "Resources"; })
+               .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+               .AddDataAnnotationsLocalization()
+               .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
+            services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
+            services.AddTransient(typeof(IRepository<,>), typeof(Repository<,>));
+
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
+            services.Configure<RequestLocalizationOptions>(
+              opts =>
+              {
+                  var supportedCultures = new List<CultureInfo>
+                  {
+                        new CultureInfo("en-US"),
+                        new CultureInfo("vi-VN")
+                  };
+
+                  opts.DefaultRequestCulture = new RequestCulture("en-US");
+                  // Formatting numbers, dates, etc.
+                  opts.SupportedCultures = supportedCultures;
+                  // UI strings that we have localized.
+                  opts.SupportedUICultures = supportedCultures;
+              });
+
+            // ===== Configure Identity =======
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "auth_cookie";
+                options.Cookie.SameSite = SameSiteMode.None;
+                options.LoginPath = new PathString("/login.html");
+                options.AccessDeniedPath = new PathString("/login.html");
+            });
+
+            // Declare Repository
+            services.AddTransient<IFunctionRepository, FunctionRepository>();
+            services.AddTransient<IClassRepository, ClassRepository>();
+            services.AddTransient<ISubjectRepository, SubjectRepository>();
+            services.AddTransient<IRegisterClassRepository, RegisterClassRepository>();
+
+            //Delcare Service
+
+            services.AddTransient<IFunctionService, FunctionService>();
+            services.AddTransient<IClassService, ClassService>();
+            services.AddTransient<ISubjectService, SubjectService>();
+            services.AddTransient<IRegisterClassService, RegisterClassService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

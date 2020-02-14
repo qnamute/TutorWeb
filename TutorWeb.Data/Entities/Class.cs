@@ -8,6 +8,40 @@ namespace TutorWeb.Data.Entities
     [Table("Classes")]
     public class Class : DomainEntity<int>, IDateTracking
     {
+        public Class()
+        {
+        }
+
+        public Class(int id, string level, int subjectId, int address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, DateTime dateCreated, DateTime dateModified)
+        {
+            Id = id;
+            Level = level;
+            SubjectId = subjectId;
+            Address = address;
+            Salary = salary;
+            NumberOfSessions = numberOfSessions;
+            TeachingTime = teachingTime;
+            Request = request;
+            ContactInfo = contactInfo;
+            DateCreated = dateCreated;
+            DateModified = dateModified;
+        }
+
+        public Class(string level, int subjectId, int address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, Subject subject, DateTime dateCreated, DateTime dateModified)
+        {
+            Level = level;
+            SubjectId = subjectId;
+            Address = address;
+            Salary = salary;
+            NumberOfSessions = numberOfSessions;
+            TeachingTime = teachingTime;
+            Request = request;
+            ContactInfo = contactInfo;
+            Subject = subject;
+            DateCreated = dateCreated;
+            DateModified = dateModified;
+        }
+
         public string Level { get; set; }
 
         public int SubjectId { get; set; }
