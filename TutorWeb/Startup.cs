@@ -51,7 +51,6 @@ namespace TutorWeb
             services.AddIdentity<User, Role>()
                 .AddRoles<Role>()
                 .AddRoleManager<RoleManager<Role>>()
-                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<AppDbContext>();
 
             //Config identity
@@ -134,13 +133,6 @@ namespace TutorWeb
               });
 
             // ===== Configure Identity =======
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.Cookie.Name = "auth_cookie";
-                options.Cookie.SameSite = SameSiteMode.None;
-                options.LoginPath = new PathString("/login.html");
-                options.AccessDeniedPath = new PathString("/login.html");
-            });
 
             // Declare Repository
             services.AddTransient<IFunctionRepository, FunctionRepository>();

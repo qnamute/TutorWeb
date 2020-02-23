@@ -12,7 +12,7 @@ namespace TutorWeb.Data.Entities
         {
         }
 
-        public Class(int id, string level, int subjectId, int address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, DateTime dateCreated, DateTime dateModified)
+        public Class(int id, string level, int subjectId, string address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, DateTime dateCreated, DateTime dateModified)
         {
             Id = id;
             Level = level;
@@ -27,7 +27,7 @@ namespace TutorWeb.Data.Entities
             DateModified = dateModified;
         }
 
-        public Class(string level, int subjectId, int address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, Subject subject, DateTime dateCreated, DateTime dateModified)
+        public Class(string level, int subjectId, string address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, Subject subject, DateTime dateCreated, DateTime dateModified)
         {
             Level = level;
             SubjectId = subjectId;
@@ -46,7 +46,7 @@ namespace TutorWeb.Data.Entities
 
         public int SubjectId { get; set; }
 
-        public int Address { get; set; }
+        public string Address { get; set; }
 
         public decimal Salary { get; set; }
 

@@ -67,7 +67,7 @@ namespace TutorWeb.Data.EF
 
                 if (check.Succeeded)
                 {
-                    var user = await _userManager.FindByNameAsync("admin"); // tim user admin
+                    var user = await _userManager.FindByNameAsync("admin@gmail.com"); // tim user admin
                     _userManager.AddToRoleAsync(user, "Admin").Wait(); // add admin vao role admin
                 }
             }
@@ -84,7 +84,7 @@ namespace TutorWeb.Data.EF
             {
                 _context.Functions.AddRange(new List<Function>()
                 {
-                      new Function() {Name = "Quản lý bài đăng",ParentId = 0,SortOrder = 1,URL = "",IconCss = "fa-tasks"  },
+                      new Function() {Name = "Quản lý bài đăng",ParentId = 0,SortOrder = 1,URL = "/Admin/Post",IconCss = "fa-tasks"  },
                       new Function() {Name = "Quản lý lớp",ParentId = 0,SortOrder = 1, URL = "/Admin/Property",IconCss = "fa-home"  },
                       new Function() {Name = "Quản lý môn học",ParentId = 0,SortOrder = 2, URL = "/Admin/ActiveProperty",IconCss = "fa-home"  },
                       new Function() {Name = "Quản lý tài khoản",ParentId = 0, SortOrder = 3, URL = "/Admin/InActiveProperty",IconCss = "fa-home"  },

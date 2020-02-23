@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Threading.Tasks;
 using TutorWeb.Application.Interfaces;
 using TutorWeb.Application.ViewModels;
 using TutorWeb.Data.IRepositories;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace TutorWeb.Application.Implementations
 {

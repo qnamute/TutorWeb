@@ -1,0 +1,102 @@
+﻿@section Styles {
+    <link href="~/lib/ckeditor/skins/moono/editor.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/app/controllers/classes/index.js"></script>
+    <script>
+        var classes = new classesController();
+        classes.initialize();
+    </script>
+}
+
+<div class="page-title">
+    <div class="title_left">
+        <h3>Danh sách bài đăng Hoạt động</h3>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+            <div class="input-group">
+                <input type="text" id="txtKeyword" class="form-control" placeholder="Gõ từ khóa...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btnSearch" type="button">Tìm!</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12  form-group pull-right">
+            <select class="form-control" id="ddlCategorySearch">
+                <option>Chọn loại</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="panel panel-default table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center" width="5%">STT</th>
+                                <th class="text-center">Lớp</th>
+                                <th class="text-center">Môn học</th>
+                                <th class="text-center">Địa chỉ</th>
+                                <th class="text-center">Yêu cầu</th>
+                                <th class="text-center">Thời gian dạy</th>
+                                <th class="text-center">Ngày đăng</th>
+                                <th class="text-center" width="4%"></th>
+                                <th class="text-center" width="9%"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContent">
+                        </tbody>
+                    </table>
+                </div>
+                <!--Pagination-->
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                            <select id="ddlShowPage">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                bản ghi/trang.
+                            </span>
+                            Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
+                        </div>
+                    </div><div class="col-sm-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                            <ul id="paginationUL"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <th scope="row">{{STT}}</th>
+        <th>{{Level}}</th>
+        <th>{{Subject}}</th>
+        <th>{{Address}}</th>
+        <th>{{Request}}</th>
+        <th>{{TeachingTime}} m<sup>2</sup></th>
+        <th class="text-center">{{{DateCreated}}}</th>
+        <th class="text-center">
+            <button class="btn btn-sm btn-info btn-detail" data-id="{{Id}}" title="Xem chi tiết"><i class="fa fa-info-circle"></i></button>
+        </th>
+        <th>
+            @* Button detail *@
+            <button class="btn btn-sm btn-warning btn-hide" data-id="{{Id}}" title="Ẩn"><i class="fa fa-eye-slash"></i></button>
+            <button class="btn btn-sm btn-danger btn-delete" data-id="{{Id}}" title="Xóa"><i class="fa fa-trash"></i></button>
+        </th>
+    </tr>
+</script>

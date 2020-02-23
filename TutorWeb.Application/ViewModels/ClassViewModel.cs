@@ -12,7 +12,7 @@ namespace TutorWeb.Application.ViewModels
 
         public int SubjectId { get; set; }
 
-        public int Address { get; set; }
+        public string Address { get; set; }
 
         public decimal Salary { get; set; }
 
