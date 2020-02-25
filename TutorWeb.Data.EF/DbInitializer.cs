@@ -83,13 +83,12 @@ namespace TutorWeb.Data.EF
             if (_context.Functions.Count() == 0)
             {
                 _context.Functions.AddRange(new List<Function>()
-                {
-                      new Function() {Name = "Quản lý bài đăng",ParentId = 0,SortOrder = 1,URL = "/Admin/Post",IconCss = "fa-tasks"  },
-                      new Function() {Name = "Quản lý lớp",ParentId = 0,SortOrder = 1, URL = "/Admin/Property",IconCss = "fa-home"  },
-                      new Function() {Name = "Quản lý môn học",ParentId = 0,SortOrder = 2, URL = "/Admin/ActiveProperty",IconCss = "fa-home"  },
-                      new Function() {Name = "Quản lý tài khoản",ParentId = 0, SortOrder = 3, URL = "/Admin/InActiveProperty",IconCss = "fa-home"  },
-                      new Function() {Name = "Gia sư",ParentId = 4,SortOrder = 4, URL = "/Admin/AwaitingApprovalProperty",IconCss = "fa-home"  },
-                      new Function() {Name = "Tài khoản thường",ParentId = 4,SortOrder = 4, URL = "/Admin/AwaitingApprovalProperty",IconCss = "fa-home"  }
+                {          
+                      new Function() {Name = "Quản lý lớp",ParentId = 0,SortOrder = 1, URL = "Admin/Classes",IconCss = "fa-home"  },
+                      new Function() {Name = "Quản lý môn học",ParentId = 0,SortOrder = 2, URL = "/Admin/Subjects",IconCss = "fa-home"  },
+                      new Function() {Name = "Quản lý tài khoản",ParentId = 0, SortOrder = 3, URL = "",IconCss = "fa-home"  },
+                      new Function() {Name = "Gia sư",ParentId = 3,SortOrder = 4, URL = "/Admin/Tutors",IconCss = "fa-home"  },
+                      new Function() {Name = "Tài khoản thường",ParentId = 3,SortOrder = 4, URL = "/Admin/NormalAccount",IconCss = "fa-home"  }
                 });
             }
             try
@@ -100,6 +99,43 @@ namespace TutorWeb.Data.EF
             {
                 string a = ex.ToString();
             };
-        }
+
+            if (_context.Subjects.Count() == 0)
+            {
+                _context.Subjects.AddRange(new List<Subject>()
+                {
+                    new Subject() {Name= "Toán", Code="TOAN01"},
+                    new Subject() {Name= "Ngữ Văn", Code="VAN01"},
+                    new Subject() {Name="Vật Lý", Code="LY01"},
+                    new Subject() {Name = "Hóa Học", Code="HOA01"}
+                });
+            }
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                string a = ex.ToString();
+            }
+
+            if (_context.Classes.Count() == 0)
+            {
+                _context.Classes.AddRange(new List<Class>()
+                {
+                    new Class() {Level="1", SubjectId = 1, Address="01 Vo Van Ngan", Salary = 1500000, NumberOfSessions=2, TeachingTime="T2, 3 Tối 5h30 hoặc 6h (1b=2 giờ)", Request="(Sinh viên Nam)", ContactInfo="123132123 - 123123123"},
+                    new Class() {Level="2", SubjectId = 2, Address="02 Vo Van Ngan", Salary = 1900000, NumberOfSessions=2, TeachingTime="T2, 3 Tối 5h30 hoặc 6h (1b=2 giờ)", Request="(Sinh viên Nam)", ContactInfo="123132123 - 123123123"},
+                    new Class() {Level="3", SubjectId = 3, Address="03 Vo Van Ngan", Salary = 2500000, NumberOfSessions=2, TeachingTime="T2, 3 Tối 5h30 hoặc 6h (1b=2 giờ)", Request="(Sinh viên Nam)", ContactInfo="123132123 - 123123123"}
+                });
+            }
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                string a = ex.ToString();
+            }
+        } 
     }
 }

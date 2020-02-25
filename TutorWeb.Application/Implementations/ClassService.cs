@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TutorWeb.Application.Interfaces;
 using TutorWeb.Application.ViewModels;
 using TutorWeb.Data.IRepositories;
@@ -16,6 +15,12 @@ namespace TutorWeb.Application.Implementations
         private IClassRepository _classRepository;
         private IUnitOfWork _unitOfWork;
 
+        public ClassService(IClassRepository classRepository, IUnitOfWork unitOfWork)
+        {
+            _classRepository = classRepository;
+            _unitOfWork = unitOfWork;
+        }
+
         public void Delete(int id)
         {
             throw new NotImplementedException();
@@ -28,7 +33,8 @@ namespace TutorWeb.Application.Implementations
 
         public List<ClassViewModel> GetAll()
         {
-            throw new NotImplementedException();
+            var query = _classRepository.FindAll();
+            return query.ProjectTo<ClassViewModel>().ToList();
         }
 
         public PagedResult<ClassViewModel> GetAllPaging(string keyWord, int page, int pageSize)
@@ -36,7 +42,7 @@ namespace TutorWeb.Application.Implementations
             var query = _classRepository.FindAll();
             if (!string.IsNullOrEmpty(keyWord))
             {
-                query = query.Where(x=>x.Address.Contains(keyWord));
+                query = query.Where(x => x.Address.Contains(keyWord));
             }
 
             int totalRow = query.Count();

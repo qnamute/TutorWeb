@@ -1,4 +1,4 @@
-﻿var classesController = function () {
+﻿var subjectsController = function () {
     this.initialize = function () {
         registerEvent();
         loadData();
@@ -13,9 +13,8 @@
 
         $.ajax({
             type: 'GET',
-            url: '/admin/Classes/GetAllPaging',
+            url: '/admin/Subjects/GetAllPaging',
             data: {
-                keyWord: $('#txtKeyword').val(),
                 page: tutorweb.configs.pageIndex,
                 pageSize: tutorweb.configs.pageSize
             },
@@ -26,11 +25,8 @@
                     render += Mustache.render(template, {
                         STT: i + 1,
                         Id: item.Id,
-                        Level: item.Level,
-                        Subject: item.Subject.Name,
-                        Address: item.Address,
-                        Request: item.Request,
-                        TeachingTime: item.TeachingTime,
+                        Code: item.Code,
+                        Name: item.Name,
                         DateCreated: tutorweb.dateFormatJson(item.DateCreated),
                     });
                 });
@@ -49,7 +45,7 @@
     function wrapPaging(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tutorweb.configs.pageSize);
         //Unbind pagination if it existed or click change pagesize
-        if ($('#paginationUL a').length === 0 || changePageSize === true) {
+        if ($('#paginationUL').length === 0 || changePageSize === true) {
             $('#paginationUL').empty();
             $('#paginationUL').removeData("twbs-pagination");
             $('#paginationUL').unbind("page");

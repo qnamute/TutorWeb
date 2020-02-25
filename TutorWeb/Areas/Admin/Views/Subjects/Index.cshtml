@@ -3,16 +3,16 @@
 }
 
 @section Scripts {
-    <script src="~/app/controllers/classes/index.js"></script>
+    <script src="~/app/controllers/subjects/index.js"></script>
     <script>
-        var classes = new classesController();
-        classes.initialize();
+        var subjects = new subjectsController();
+        subjects.initialize();
     </script>
 }
 
 <div class="page-title">
     <div class="title_left">
-        <h3>Danh Sách Lớp</h3>
+        <h3>Danh Sách Môn Học</h3>
     </div>
 
     <div class="title_right">
@@ -29,13 +29,9 @@
                         <thead>
                             <tr>
                                 <th class="text-center" width="5%">STT</th>
-                                <th class="text-center">Lớp</th>
-                                <th class="text-center">Môn học</th>
-                                <th class="text-center">Địa chỉ</th>
-                                <th class="text-center">Yêu cầu</th>
-                                <th class="text-center">Thời gian dạy</th>
+                                <th class="text-center">Mã môn</th>
+                                <th class="text-center">Tên</th>
                                 <th class="text-center">Ngày đăng</th>
-                                <th class="text-center" width="4%"></th>
                                 <th class="text-center" width="9%"></th>
                             </tr>
                         </thead>
@@ -71,18 +67,12 @@
 <script id="table-template" type="x-tmpl-mustache">
     <tr>
         <th scope="row">{{STT}}</th>
-        <th>Lớp {{Level}}</th>
-        <th>{{Subject}}</th>
-        <th>{{Address}}</th>
-        <th>{{Request}}</th>
-        <th>{{TeachingTime}}</th>
+        <th>{{Code}}</th>
+        <th>{{Name}}</th>
         <th class="text-center">{{{DateCreated}}}</th>
-        <th class="text-center">
-            <button class="btn btn-sm btn-info btn-detail" data-id="{{Id}}" title="Xem chi tiết"><i class="fa fa-info-circle"></i></button>
-        </th>
         <th>
             @* Button detail *@
-            <button class="btn btn-sm btn-warning btn-hide" data-id="{{Id}}" title="Ẩn"><i class="fa fa-eye-slash"></i></button>
+            <button class="btn btn-sm btn-warning btn-hide" data-id="{{Id}}" title="Sửa"><i class="fa fa-pencil"></i></button>
             <button class="btn btn-sm btn-danger btn-delete" data-id="{{Id}}" title="Xóa"><i class="fa fa-trash"></i></button>
         </th>
     </tr>
