@@ -5,6 +5,38 @@
     }
 
     function registerEvent() {
+
+
+        $('body').on('click', '.btn-delete', function (e) {
+            e.preventDefault();
+            var that = $(this).data('id');
+            console.log(that);
+
+            easy2getroom.confirm('Bạn có chắc chắn muốn xóa ?', function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Admin/InActiveProperty/Delete',
+                    data: {
+                        id: that,
+                    },
+                    dataType: 'text',
+                    beforeSend: function () {
+                        easy2getroom.startLoading();
+                    },
+                    success: function () {
+                        easy2getroom.notify('Xóa thành công', 'success');
+                        easy2getroom.stopLoading();
+                        loadData();
+                    },
+                    error: function (status) {
+                        easy2getroom.notify('Xóa không thành công', 'error');
+                        easy2getroom.stopLoading();
+                    }
+                });
+            });
+
+            //$('#delete-modal').modal('show');
+        });
     }
 
     function loadData(isPageChanged) {
@@ -62,7 +94,7 @@
                 onPageClick: function (event, p) {
                     tutorweb.configs.pageIndex = p;
                     setTimeout(callBack(), 200);
-                }
+                
             });
         }
     }

@@ -1,9 +1,11 @@
-﻿using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using TutorWeb.Application.Interfaces;
 using TutorWeb.Application.ViewModels;
+using TutorWeb.Data.Entities;
 using TutorWeb.Data.IRepositories;
 using TutorWeb.Infrastructure.Interfaces;
 using TutorWeb.Utilities.Dtos;
@@ -64,7 +66,20 @@ namespace TutorWeb.Application.Implementations
 
         public ClassViewModel GetById(int id)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<Class, ClassViewModel>(_classRepository.FindById(id));
+        }
+
+        public List<ClassViewModel> GetListSlider()
+        {
+            var query = _classRepository.FindAll().Where(c => c.IsSliderDisplay == true).ProjectTo<ClassViewModel>().ToList();
+            return query;
+        }
+
+        public List<ClassViewModel> GetNewClasses()
+        {
+            var query = _classRepository.FindAll().OrderByDescending(c => c.DateCreated).Take(6)
+                .ProjectTo<ClassViewModel>().ToList();
+            return query;
         }
 
         public void Save()

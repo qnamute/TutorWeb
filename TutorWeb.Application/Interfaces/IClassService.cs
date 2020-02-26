@@ -9,6 +9,10 @@ namespace TutorWeb.Application.Interfaces
     {
         List<ClassViewModel> GetAll();
 
+        List<ClassViewModel> GetListSlider();
+
+        List<ClassViewModel> GetNewClasses();
+
         PagedResult<ClassViewModel> GetAllPaging(string keyWord, int page, int pageSize);
 
         ClassViewModel GetById(int id);

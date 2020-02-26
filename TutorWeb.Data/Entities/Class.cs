@@ -12,7 +12,24 @@ namespace TutorWeb.Data.Entities
         {
         }
 
-        public Class(int id, string level, int subjectId, string address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, DateTime dateCreated, DateTime dateModified)
+        public Class(string level, int subjectId, string address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, 
+            bool isSliderDisplay, DateTime dateCreated, DateTime dateModified)
+        {
+            Level = level;
+            SubjectId = subjectId;
+            Address = address;
+            Salary = salary;
+            NumberOfSessions = numberOfSessions;
+            TeachingTime = teachingTime;
+            Request = request;
+            ContactInfo = contactInfo;
+            IsSliderDisplay = isSliderDisplay;
+            DateCreated = dateCreated;
+            DateModified = dateModified;
+        }
+
+        public Class(int id, string level, int subjectId, string address, decimal salary, int numberOfSessions,
+            string teachingTime, string request, string contactInfo, bool isSliderDisplay, DateTime dateCreated, DateTime dateModified)
         {
             Id = id;
             Level = level;
@@ -23,21 +40,7 @@ namespace TutorWeb.Data.Entities
             TeachingTime = teachingTime;
             Request = request;
             ContactInfo = contactInfo;
-            DateCreated = dateCreated;
-            DateModified = dateModified;
-        }
-
-        public Class(string level, int subjectId, string address, decimal salary, int numberOfSessions, string teachingTime, string request, string contactInfo, Subject subject, DateTime dateCreated, DateTime dateModified)
-        {
-            Level = level;
-            SubjectId = subjectId;
-            Address = address;
-            Salary = salary;
-            NumberOfSessions = numberOfSessions;
-            TeachingTime = teachingTime;
-            Request = request;
-            ContactInfo = contactInfo;
-            Subject = subject;
+            IsSliderDisplay = isSliderDisplay;
             DateCreated = dateCreated;
             DateModified = dateModified;
         }
@@ -57,6 +60,8 @@ namespace TutorWeb.Data.Entities
         public string Request { get; set; }
 
         public string ContactInfo { get; set; }
+
+        public bool IsSliderDisplay { get; set; }
 
         public virtual Subject Subject { get; set; }
 

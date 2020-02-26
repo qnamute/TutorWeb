@@ -24,6 +24,8 @@ namespace TutorWeb.Application.ViewModels
 
         public string ContactInfo { get; set; }
 
+        public bool IsSliderDisplay { get; set; }
+
         public virtual SubjectViewModel Subject { get; set; }
 
         public DateTime DateCreated { get; set; }

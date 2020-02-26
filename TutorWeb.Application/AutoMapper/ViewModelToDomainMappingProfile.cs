@@ -10,7 +10,7 @@ namespace Easy2GetRoom.Application.AutoMapper
         {
             CreateMap<ClassViewModel, Class>()
                 .ConstructUsing(c => new Class(c.Id, c.Level, c.SubjectId, c.Address, c.Salary, c.NumberOfSessions, c.TeachingTime,
-                c.Request, c.ContactInfo, c.DateCreated, c.DateModified));
+                c.Request, c.ContactInfo, c.IsSliderDisplay, c.DateCreated, c.DateModified));
 
             CreateMap<FunctionViewModel, Function>()
                 .ConstructUsing(c => new Function(c.Id, c.Name, c.URL, c.ParentId, c.IconCss,
