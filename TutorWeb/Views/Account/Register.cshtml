@@ -1,0 +1,82 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+    <div class="site-section" style="margin-top:200px; margin-bottom:200px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 mb-12">
+                    <h1 class="mb-2 text-center">Đăng ký tài khoản</h1>
+                </div>
+                <div class="col-md-3 col-lg-3 mb-3">
+                </div>
+                <div class="col-md-6 col-lg-6 mb-6">
+                    <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                        <div class="row form-group">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <div class="check-title">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-user col-1" style="width:40px;"></i> </span>
+                            </div>
+                            <input type="text" asp-for="FullName" name="fullname" class="form-control" placeholder="Họ và tên">
+                        </div>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-envelope col-1" style="width:40px;"></i> </span>
+                            </div>
+                            <input type="email" asp-for="Email" id="email" name="email" col-1" class="form-control" placeholder="Địa chỉ email">
+                        </div>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock col-1" style="width:40px;"></i> </span>
+                            </div>
+                            <input type="password" asp-for="Password" id="password" name="password" class="form-control" placeholder="Mật khẩu">
+                        </div>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-lock col-1" style="width:40px;"></i> </span>
+                            </div>
+                            <input type="password" asp-for="ConfirmPassword" id="confirmPassword" name="confirmPassword" class="form-control"
+                                   placeholder="Nhập lại mật khẩu">
+                        </div>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-birthday-cake col-1" style="width:40px;"></i> </span>
+                            </div>
+                            <input type="text" asp-for="BirthDay" id="birthDay" name="birthDay" class="form-control date-time">
+                        </div>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-phone col-1" style="width:40px;"></i> </span>
+                            </div>
+                            <input type="text" asp-for="PhoneNumber" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Số diện thoại">
+                        </div>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-home col-1" style="width:40px;"></i> </span>
+                            </div>
+                            <input type="text" asp-for="Address" id="address" name="address" class="form-control" placeholder="Địa chỉ">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">
+                                <i class="fa fa-sign-in"></i>
+                                Tạo tài khoản
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-3 col-lg-3 mb-3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

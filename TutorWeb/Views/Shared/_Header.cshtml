@@ -1,0 +1,89 @@
+﻿        <!-- Header -->
+
+<header class="header">
+
+    <!-- Top Bar -->
+    <div class="top_bar">
+        <div class="top_bar_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+                            <ul class="top_bar_contact_list">
+                                <li>
+
+                                </li>
+                            </ul>
+                            <div class="top_bar_login ml-auto">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Content -->
+    <div class="header_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                        <div class="logo_container">
+                            <a href="~/">
+                                <div class="logo_text">Gia<span>Sư</span></div>
+                            </a>
+                        </div>
+                        <nav class="main_nav_contaner ml-auto">
+                            <ul class="main_nav">
+                                <li class="active"><a href="~/">Trang chủ</a></li>
+                                <li><a href="~/client-site/about.html">Gia sư</a></li>
+                                <li><a href="~/client-site/courses.html">Lớp mới</a></li>
+                                <li><a href="~/client-site/blog.html">Liên hệ</a></li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li><a href="~/client-site/#">Tài khoản</a></li>
+                                    <li>
+                                        <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                                            <a href="#" onclick="document.getElementById('logoutForm').submit()"><h6>Đăng xuất  </h6></a>  <i class="fa fa-sign-out"></i>
+                                        </form>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li><a title="login" href="/login.html">Đăng nhập</a></li>
+                                    <li>
+                                        <a title="register" href="/register.html">Đăng ký</a>
+                                    </li>
+                                }
+                            </ul>
+                            <div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
+
+                            <!-- Hamburger -->
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Search Panel -->
+    <div class="header_search_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="header_search_content d-flex flex-row align-items-center justify-content-end">
+                        <form action="#" class="header_search_form">
+                            <input type="search" class="search_input" placeholder="Tìm kiếm" required="required">
+                            <button class="header_search_button d-flex flex-column align-items-center justify-content-center">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

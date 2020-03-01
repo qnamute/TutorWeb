@@ -24,7 +24,7 @@ namespace TutorWeb.Controllers
 
             homeViewModel.NewClasses = _classService.GetNewClasses();
 
-            return View(homeViewModel;
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()

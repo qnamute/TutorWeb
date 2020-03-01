@@ -1,5 +1,12 @@
 ﻿	<!-- Home -->
 
+@model HomeViewModel
+@{
+    ViewData["Title"] = "Trang chủ";
+
+}
+
+
 <div class="home">
     <div class="home_slider_container">
 
@@ -176,98 +183,46 @@
         <div class="row">
             <div class="col">
                 <div class="section_title_container text-center">
-                    <h2 class="section_title">Popular Online Courses</h2>
-                    <div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
+                    <h2 class="section_title">Danh sách lớp học mới</h2>
+                    <div class="section_subtitle"><p>Danh sách các lớp học mới nhất</p></div>
                 </div>
             </div>
         </div>
         <div class="row courses_row">
 
             <!-- Course -->
-            <div class="col-lg-4 course_col">
-                <div class="course">
-                    <div class="course_image"><img src="~/client-site/images/course_1.jpg" alt=""></div>
-                    <div class="course_body">
-                        <h3 class="course_title"><a href="~/client-site/course.html">Software Training</a></h3>
-                        <div class="course_teacher">Mr. John Taylor</div>
-                        <div class="course_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
+            @foreach (var item in Model.NewClasses)
+            {
+                var url = "/tutorweb." + item.Id + ".html";
+                <div class="col-lg-4 course_col">
+                    <div class="course">
+                        <div class="course_body">
+                            <h3 class="course_title"><a href="@url">Lớp đang cần gia sư</a></h3>
+                            <div class="course_teacher"><h4>Môn: @item.Subject.Name</h4></div>
+                            <div class="course_text">
+                                <h5 class="text-danger">Địa chỉ: @item.Address</h5>
+                                <h5 class="text-danger">Ca dạy / tuần: @item.NumberOfSessions</h5>
+                                <h5 class="text-danger">Thời gian dạy: @item.TeachingTime</h5>
+                                <h5 class="text-danger">Yêu cầu: @item.Request</h5>
+                                <h5 class="text-danger">Liên hệ: @item.ContactInfo</h5>
+                                <h5 class="text-danger">Ngày đăng: @item.DateCreated.ToShortDateString()</h5>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course_footer">
-                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="course_info">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                <span>20 Student</span>
+                        <div class="course_footer">
+                            <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                <div class="course_price ml-auto">Lương: @item.Salary.ToString("N0") VNĐ</div>
                             </div>
-                            <div class="course_info">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span>5 Ratings</span>
+                            <div class="course_footer_content d-flex flex-row align-items-lg-end justify-content-end left_col">
+                                <button class="btn btn-primary register-class" data-id="@item.Id" btn-md>Nhận lớp</button>
                             </div>
-                            <div class="course_price ml-auto">$130</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Course -->
-            <div class="col-lg-4 course_col">
-                <div class="course">
-                    <div class="course_image"><img src="~/client-site/images/course_2.jpg" alt=""></div>
-                    <div class="course_body">
-                        <h3 class="course_title"><a href="~/client-site/course.html">Developing Mobile Apps</a></h3>
-                        <div class="course_teacher">Ms. Lucius</div>
-                        <div class="course_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                        </div>
-                    </div>
-                    <div class="course_footer">
-                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="course_info">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                <span>20 Student</span>
-                            </div>
-                            <div class="course_info">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span>5 Ratings</span>
-                            </div>
-                            <div class="course_price ml-auto">Free</div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Course -->
-            <div class="col-lg-4 course_col">
-                <div class="course">
-                    <div class="course_image"><img src="~/client-site/images/course_3.jpg" alt=""></div>
-                    <div class="course_body">
-                        <h3 class="course_title"><a href="~/client-site/course.html">Starting a Startup</a></h3>
-                        <div class="course_teacher">Mr. Charles</div>
-                        <div class="course_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
-                        </div>
-                    </div>
-                    <div class="course_footer">
-                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="course_info">
-                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                                <span>20 Student</span>
-                            </div>
-                            <div class="course_info">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span>5 Ratings</span>
-                            </div>
-                            <div class="course_price ml-auto"><span>$320</span>$220</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            }
         </div>
         <div class="row">
             <div class="col">
-                <div class="courses_button trans_200"><a href="~/client-site/#">view all courses</a></div>
+                <div class="courses_button trans_200"><a href="~/client-site/#">Xem tất cả các lớp học</a></div>
             </div>
         </div>
     </div>
