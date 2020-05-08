@@ -15,7 +15,7 @@
                                 </li>
                             </ul>
                             <div class="top_bar_login ml-auto">
-                               
+
                             </div>
                         </div>
                     </div>
@@ -38,15 +38,15 @@
                         <nav class="main_nav_contaner ml-auto">
                             <ul class="main_nav">
                                 <li class="active"><a href="~/">Trang chủ</a></li>
-                                <li><a href="~/client-site/about.html">Gia sư</a></li>
-                                <li><a href="~/client-site/courses.html">Lớp mới</a></li>
+                                <li><a href="~/all-tutors.html">Gia sư</a></li>
+                                <li><a href="~/all-classes.html">Lớp mới</a></li>
                                 <li><a href="~/client-site/blog.html">Liên hệ</a></li>
                                 @if (User.Identity.IsAuthenticated)
                                 {
                                     <li><a href="~/client-site/#">Tài khoản</a></li>
                                     <li>
                                         <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
-                                            <a href="#" onclick="document.getElementById('logoutForm').submit()"><h6>Đăng xuất  </h6></a>  <i class="fa fa-sign-out"></i>
+                                            <a href="#" onclick="document.getElementById('logoutForm').submit()">Đăng xuất</a>
                                         </form>
                                     </li>
                                 }
@@ -86,4 +86,5 @@
             </div>
         </div>
     </div>
+
 </header>

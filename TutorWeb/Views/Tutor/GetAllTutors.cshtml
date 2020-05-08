@@ -1,0 +1,54 @@
+﻿
+@model List<User>
+@{
+    ViewData["Title"] = "Tất cả lớp học";
+
+}
+
+<div class="home" style="height:120px">
+
+</div>
+
+<div class="courses">
+    <div class="section_background parallax-window" data-parallax="scroll" data-image-src="client-site/images/courses_background.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <h2 class="section_title">
+                        Tất cả gia sư
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row courses_row">
+
+            <!-- Course -->
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 course_col">
+                    <div class="course">
+                        <div class="course_body">
+                            <h3 class="course_title">Gia sư</h3>
+                            <div class="course_teacher"><h4>Tên: @item.FullName</h4></div>
+                            @if (item.Avatar != null)
+                            {
+                                <div class="about_item_image" style="width:150px"><img style="width:150px" src="@item.Avatar" alt=""></div>
+                            }
+                            else
+                            {
+                                <div class="about_item_image" style="width:150px"><img style="width:150px" src="~/client-site/images/avatarDefault.jpg" alt=""></div>
+                            }
+                            <div class="course_text">
+                                <h5 class="text-danger">Ngày sinh: @item.BirthDay</h5>
+                                <h5 class="text-danger">Trình độ học vấn: @item.Literacy</h5>
+                                <h5 class="text-danger">Số điện thoại: @item.PhoneNumber</h5>
+                                <h5 class="text-danger">Giới tính: @item.Gender</h5>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

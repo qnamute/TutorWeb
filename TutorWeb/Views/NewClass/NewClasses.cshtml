@@ -1,0 +1,83 @@
+﻿	<!-- Home -->
+@using TutorWeb.Application.ViewModels
+@model List<ClassViewModel>
+
+<div class="home" style="height:120px">
+
+</div>
+
+<!-- Courses -->
+
+<div class="courses">
+    <div class="container">
+        <div class="row">
+
+            <!-- Courses Main Content -->
+            <div class="col-lg-12">
+                <div class="courses_container">
+                    <div class="row courses_row">
+                        <!-- Course -->
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-4 course_col">
+                                <div class="course">
+                                    <div class="course_body">
+                                        <h3 class="course_title">Lớp đang cần gia sư</h3>
+                                        <div class="course_teacher"><h4>Môn: @item.Subject.Name</h4></div>
+                                        <div class="course_text">
+                                            <h5 class="text-danger">Địa chỉ: @item.Address</h5>
+                                            <h5 class="text-danger">Ca dạy / tuần: @item.NumberOfSessions</h5>
+                                            <h5 class="text-danger">Thời gian dạy: @item.TeachingTime</h5>
+                                            <h5 class="text-danger">Yêu cầu: @item.Request</h5>
+                                            <h5 class="text-danger">Liên hệ: @item.ContactInfo</h5>
+                                            <h5 class="text-danger">Ngày đăng: @item.DateCreated.ToShortDateString()</h5>
+                                        </div>
+                                    </div>
+                                    <div class="course_footer">
+                                        <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
+                                            <div class="course_price ml-auto">Lương: @item.Salary.ToString("N0") VNĐ</div>
+                                        </div>
+                                        <div class="course_footer_content d-flex flex-row align-items-lg-end justify-content-end left_col">
+                                            <button class="btn btn-primary register-class" data-id="@item.Id" btn-md>Nhận lớp</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <!-- Course -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter -->
+
+<div class="newsletter">
+    <div class="newsletter_background parallax-window" data-parallax="scroll" data-image-src="images/newsletter.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="newsletter_container d-flex flex-lg-row flex-column align-items-center justify-content-start">
+
+                    <!-- Newsletter Content -->
+                    <div class="newsletter_content text-lg-left text-center">
+                        <div class="newsletter_title">sign up for news and offers</div>
+                        <div class="newsletter_subtitle">Subcribe to lastest smartphones news & great deals we offer</div>
+                    </div>
+
+                    <!-- Newsletter Form -->
+                    <div class="newsletter_form_container ml-lg-auto">
+                        <form action="#" id="newsletter_form" class="newsletter_form d-flex flex-row align-items-center justify-content-center">
+                            <input type="email" class="newsletter_input" placeholder="Your Email" required="required">
+                            <button type="submit" class="newsletter_button">subscribe</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
